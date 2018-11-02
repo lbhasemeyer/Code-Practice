@@ -5,5 +5,4 @@ function isTriangle(a,b,c) {
    return (largestSide < totalSides - largestSide) ? true : false;
 }
 
-console.log(isTriangle(2, 2, 2));
-console.log(isTriangle(1, 2, 5));
+module.exports = isTriangle;
