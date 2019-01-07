@@ -1,4 +1,4 @@
-function findUniq(arr) {
+function findUnique(arr) {
   const first = arr.sort()[0];
   const second = arr.sort()[1];
   const last = arr.sort()[arr.length-1];
@@ -7,4 +7,4 @@ function findUniq(arr) {
   else if(last !== first && last !== second){return last;}
 }
 
-module.exports = findUniq;
+module.exports = findUnique;
