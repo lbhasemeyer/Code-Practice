@@ -18,5 +18,4 @@ const shuffleCards = () => {
     return shuffledCards;
 }
 
-
 module.exports = shuffleCards;

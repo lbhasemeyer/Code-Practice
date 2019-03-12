@@ -4,12 +4,11 @@
 
 function vowelCount(str) {
   const vowels = ['a', 'e', 'i', 'o', 'u'];
-  let vowelsCount = str.split('').filter(function(item) {
+  return (str.split('').filter(function(item) {
     if(vowels.includes(item)) {
-       return item;
+      return item;
     }
-  });
-  return vowelsCount.length;
+  })).length;
 }
 
 module.exports = vowelCount;

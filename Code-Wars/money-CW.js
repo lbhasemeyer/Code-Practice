@@ -6,15 +6,13 @@
 
 function money(principal, interest, tax, desired) {
   let years = 0;
-  function addAYear() {
-    while(principal < desired) {
-      const taxCalculated = (principal * interest) * tax;
-      principal = (principal * (1+interest)) - taxCalculated;
-      years += 1;
-    };
-    return years;
+  while(principal < desired){
+    let yearsInterest = principal * interest;
+    let yearsTax = yearsInterest * tax;
+    principal = principal + yearsInterest - yearsTax;
+    years++;
   }
-  return addAYear();
+  return years;
 }
 
 module.exports = money;

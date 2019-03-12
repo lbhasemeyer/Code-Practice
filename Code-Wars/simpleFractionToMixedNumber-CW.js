@@ -5,9 +5,8 @@
 // If the x/y equals the integer part, return integer part only. If integer part is zero, return the irreducible proper fraction only. In both of these cases, the resulting string must not contain any spaces.
 // Division by zero should raise an error (preferably, the standard zero division error of your language).
 //
-// Value ranges
-// -10 000 000 < x < 10 000 000
-// -10 000 000 < y < 10 000 000
+// Value ranges for x and y are between -10 000 000 and 10 000 000
+//
 // Examples
 // Input: 42/9, expected result: 4 2/3.
 // Input: 6/3, expedted result: 2.
@@ -15,36 +14,29 @@
 // Input: 0/18891, expected result: 0.
 // Input: -10/7, expected result: -1 3/7.
 // Inputs 0/0 or 3/0 must raise a zero division error.
-// Note
-// Make sure not to modify the input of your function in-place, it is a bad practice.
+// Note: Make sure not to modify the input of your function in-place, it is a bad practice.
 
-var findGCD = (num,denom) => (denom===0) ? num : findGCD(denom,num%denom);
+// function findGCD = (num,denom) => (denom===0) ? num : findGCD(denom,num%denom);
 
 function simpleFractionToMixedNumber(s){
-  let top = Number(s.split('/')[0])
-  let bottom = Number(s.split('/')[1])
-  if(bottom === 0){
-    throw "ZeroDivisionError";
-  } else {
-    if(top%bottom === 0){
-      return (top/bottom).toString()
-    } else {
-      let whole = (top/bottom) | 0;
-      let newTop = top % bottom;
-      let newBottom = Number(bottom);
-      let gcd = findGCD(newTop,newBottom);
-      let numerator = newTop/gcd;
-      let denominator = newBottom/gcd;
-      if(whole === 0){
-        if(denominator < 0){
-          denominator = denominator * -1; numerator = numerator * -1
-        }
-        return numerator.toString()+'/'+denominator.toString()
-      } else {
-        return whole + " " + Math.abs(numerator).toString() + "/" + Math.abs(denominator).toString()
-      }
-    }
-  }
+  // let top = parseInt(s.split('/')[0]);
+  // let bottom = parseInt(s.split('/')[1]);
+  // if(bottom === 0){
+  //   return false;
+  // } else {
+  //   if(top%bottom === 0 || top === bottom){
+  //     return (top/bottom).toString()
+  //   } else {
+  //     let whole = (top/bottom) | 0;
+  //     let newTop = top % bottom;
+  //     let newBottom = parseInt(bottom);
+  //     let gcd = findGCD(newTop,newBottom);
+  //     let numerator = newTop/gcd;
+  //     let denominator = newBottom/gcd;
+  //     let fraction = Math.abs(numerator).toString() + "/" + Math.abs(denominator).toString();
+  //     return whole ? (whole + ' ' + fraction) : fraction;
+  //   }
+  // }
 }
 
 module.exports = simpleFractionToMixedNumber;

@@ -13,14 +13,12 @@
 // ** The game only ends when someone catches the golden snitch, so one array will always include 'yes' or 'no.' Points scored by Chasers can be any positive integer.
 
 function gryffindorSlytherin(gryffindor, slytherin) {
-    let gScore = gryffindor[0];
-    let sScore = slytherin[0];
-    (gryffindor[1] === 'yes') ? gScore += 150 : sScore += 150;
+    let gScore = gryffindor[0] + ((gryffindor[1] === 'yes') ? 150 : 0);
+    let sScore = slytherin[0] + ((slytherin[1] === 'yes') ? 150 : 0);
     if(gScore === sScore) {
       return "It's a draw!";
-    } else {
-      return (gScore > sScore) ? "Gryffindor wins!" : "Slytherin wins!";
     }
+    return (gScore > sScore) ? "Gryffindor wins!" : "Slytherin wins!";
 };
 
 module.exports = gryffindorSlytherin;
