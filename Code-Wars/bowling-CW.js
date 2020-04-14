@@ -7,17 +7,14 @@ function bowling(frames) {
       const isFrameTen = (bowl === 'X' || frame.includes('/')) ? true : false;
       const bowlInteger = parseInt(bowl);
       if(index !== 9) {
-        // not last frame
-        if(isFrameTen) {
-           if(bowl === 'X') {
-             additionalStrikeCounter[index] = 0;
-             score += 10;
-           } else {
-             additionalSpareCounter[index] = 0;
-             if(bowlIndex === 1) {
-               score += 10;
-             }
-           }
+        if(bowl === 'X') {
+          additionalStrikeCounter[index] = 0;
+          score += 10;
+        } else if(frame.includes('/')) {
+          additionalSpareCounter[index] = 0;
+          if(bowlIndex === 1) {
+            score += 10;
+          }
         } else {
           score += bowlInteger;
         }
@@ -47,16 +44,13 @@ function bowling(frames) {
           }
         }
       } else {
-        // last frame
-        if(isFrameTen) {
-           if(bowl === 'X') {
+        if(bowl === 'X') {
+          score += 10;
+        } else if(frame.includes('/')) {
+          if(bowlIndex === 1) {
              score += 10;
-           } else {
-             if(bowlIndex === 1) {
-               score += 10;
-             } else if(bowlIndex === 2) {
-               score += bowlInteger;
-             }
+           } else if(bowlIndex === 2) {
+             score += bowlInteger;
            }
         } else {
           score += bowlInteger;
